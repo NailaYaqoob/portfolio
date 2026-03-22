@@ -175,7 +175,7 @@ function copyTagline(btn) {
 /* ============================================================
    CONTACT FORM SUBMIT
 ============================================================ */
-function handleSubmit(e) {
+async function handleSubmit(e) {
   e.preventDefault();
   const form = e.target;
   const btn = form.querySelector('button[type="submit"]');
@@ -184,18 +184,45 @@ function handleSubmit(e) {
   btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Sending...`;
   btn.disabled = true;
 
-  // Simulate send (replace with real backend/Formspree endpoint)
-  setTimeout(() => {
+  const payload = {
+    name: form.name.value.trim(),
+    email: form.email.value.trim(),
+    service: form.service.value,
+    message: form.message.value.trim(),
+  };
+
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.detail || 'Something went wrong.');
+    }
+
     btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Message Sent!`;
     btn.style.background = 'linear-gradient(135deg, #059669, #10b981)';
+    form.reset();
 
     setTimeout(() => {
-      form.reset();
       btn.innerHTML = originalHTML;
       btn.style.background = '';
       btn.disabled = false;
     }, 3000);
-  }, 1200);
+
+  } catch (err) {
+    btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> ${err.message}`;
+    btn.style.background = 'linear-gradient(135deg, #dc2626, #ef4444)';
+
+    setTimeout(() => {
+      btn.innerHTML = originalHTML;
+      btn.style.background = '';
+      btn.disabled = false;
+    }, 4000);
+  }
 }
 
 /* ============================================================
