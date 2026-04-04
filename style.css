@@ -805,6 +805,13 @@ img { max-width: 100%; }
   flex-wrap: wrap;
   gap: 8px;
 }
+
+.project-featured-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
 .stack-tag {
   padding: 4px 11px;
   background: var(--glass);
