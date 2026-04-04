@@ -872,6 +872,45 @@ img { max-width: 100%; }
   border-radius: 100px;
   color: var(--purple-lt);
 }
+
+/* RAG project inline demo card */
+.rag-demo-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  padding: 20px 16px;
+  margin: 12px 0;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.rag-demo-card:hover {
+  border-color: rgba(103, 80, 245, 0.4);
+  transform: translateY(-2px);
+}
+.rag-demo-card .demo-card-icon { font-size: 2rem; line-height: 1; }
+.rag-demo-card .demo-card-desc {
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 0;
+}
+.rag-demo-card .demo-card-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  background: var(--grad);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  margin-top: 2px;
+}
 .stack-tag {
   padding: 4px 11px;
   background: var(--glass);
