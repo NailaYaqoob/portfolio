@@ -89,8 +89,8 @@
           <div class="about-card-wrapper">
             <div class="about-photo-placeholder">
               <div class="avatar-ring"></div>
-              <div class="avatar-inner">
-                <span class="avatar-initials">NY</span>
+              <div class="avatar-inner avatar-inner--photo">
+                <img src="naila-photo.png" alt="Naila Yaqoob — AI Developer" class="avatar-photo" />
               </div>
               <div class="status-badge">
                 <span class="status-dot"></span>
@@ -428,12 +428,36 @@
             <span class="usecase-label">Business Use Case</span>
             Online bookstores, libraries, e-learning platforms, content aggregators
           </div>
+          <!-- Demo Video with click-to-play thumbnail -->
+          <div class="video-thumb-wrapper" id="aibook-video-wrapper">
+            <div class="video-thumb-overlay" id="aibook-thumb" onclick="playDemoVideo('aibook')">
+              <video class="video-thumb-preview" id="aibook-thumb-video" muted preload="metadata" src="ai-book-demo.mp4#t=0.5"></video>
+              <div class="video-thumb-play">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+              <div class="video-label">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                Watch Demo
+              </div>
+            </div>
+            <video class="project-demo-video" id="aibook-video" controls preload="none" src="ai-book-demo.mp4" style="display:none;"></video>
+          </div>
           <div class="project-card-stack">
             <span>Python</span><span>RAG</span><span>Embeddings</span><span>OpenAI</span>
           </div>
           <div class="project-card-outcome">
             <span class="outcome-icon">📈</span>
             Increases discovery & user engagement through AI-powered relevance
+          </div>
+          <div class="project-card-links">
+            <a href="https://ai-driven-robo-book.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              Live Demo
+            </a>
+            <a href="https://github.com/NailaYaqoob/ai-driven-robo-book" target="_blank" rel="noopener noreferrer" class="project-link github-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              View on GitHub
+            </a>
           </div>
         </div>
 
@@ -456,12 +480,35 @@
             <span class="usecase-label">Business Use Case</span>
             Small teams, freelancers, agencies, internal tooling for any business
           </div>
+          <!-- Demo Video with hover-to-play thumbnail -->
+          <div class="video-thumb-wrapper" id="todo-video-wrapper">
+            <div class="video-thumb-overlay" id="todo-thumb"
+                 onmouseenter="hoverPlayVideo('todo')"
+                 onmouseleave="hoverPauseVideo('todo')"
+                 onclick="playDemoVideo('todo')">
+              <video class="video-thumb-preview" id="todo-thumb-video" muted preload="metadata" src="todo-app-demo.mp4#t=0.5"></video>
+              <div class="video-thumb-play" id="todo-play-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+              <div class="video-label">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                Watch Demo
+              </div>
+            </div>
+            <video class="project-demo-video" id="todo-video" controls preload="none" src="todo-app-demo.mp4" style="display:none;"></video>
+          </div>
           <div class="project-card-stack">
             <span>TypeScript</span><span>FastAPI</span><span>PostgreSQL</span><span>Docker</span>
           </div>
           <div class="project-card-outcome">
             <span class="outcome-icon">📈</span>
             Foundation for any SaaS product — auth + API + database ready out of the box
+          </div>
+          <div class="project-card-links">
+            <a href="https://github.com/NailaYaqoob/fullstack-todo-app" target="_blank" rel="noopener noreferrer" class="project-link github-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              View on GitHub
+            </a>
           </div>
         </div>
 
@@ -654,7 +701,7 @@
               </div>
               <div>
                 <span class="contact-option-label">LinkedIn</span>
-                <a href="#" class="contact-option-value">linkedin.com/in/nailayaqoob</a>
+                <a href="https://www.linkedin.com/in/naila-yaqoob-89a185205/" target="_blank" rel="noopener noreferrer" class="contact-option-value">linkedin.com/in/naila-yaqoob</a>
               </div>
             </div>
             <div class="contact-option">
@@ -739,8 +786,8 @@
         <div class="footer-links-col">
           <span class="footer-col-title">Connect</span>
           <a href="mailto:nailayaqoob86@gmail.com">Email Me</a>
-          <a href="#">LinkedIn</a>
-          <a href="#">GitHub</a>
+          <a href="https://www.linkedin.com/in/naila-yaqoob-89a185205/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://github.com/NailaYaqoob" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a href="#">Fiverr</a>
           <a href="#">Upwork</a>
         </div>

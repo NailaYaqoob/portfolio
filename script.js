@@ -333,3 +333,32 @@ document.querySelectorAll('.service-card, .project-card, .why-card').forEach(car
   draw();
   window.addEventListener('resize', () => { resize(); createParticles(); });
 })();
+
+/* ============================================================
+   VIDEO DEMO — hover to preview, click to play full
+============================================================ */
+function playDemoVideo(id) {
+  const thumb = document.getElementById(id + '-thumb');
+  const video = document.getElementById(id + '-video');
+  if (!thumb || !video) return;
+  thumb.style.display = 'none';
+  video.style.display = 'block';
+  video.play();
+}
+
+function hoverPlayVideo(id) {
+  const thumbVideo = document.getElementById(id + '-thumb-video');
+  const playIcon = document.getElementById(id + '-play-icon');
+  if (!thumbVideo) return;
+  thumbVideo.play();
+  if (playIcon) playIcon.style.opacity = '0';
+}
+
+function hoverPauseVideo(id) {
+  const thumbVideo = document.getElementById(id + '-thumb-video');
+  const playIcon = document.getElementById(id + '-play-icon');
+  if (!thumbVideo) return;
+  thumbVideo.pause();
+  thumbVideo.currentTime = 0;
+  if (playIcon) playIcon.style.opacity = '1';
+}
