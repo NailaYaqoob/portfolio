@@ -37,7 +37,7 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://nailayaqoob.onrender.com"],
+    allow_origins=["https://naila-portfolio.onrender.com"],
     allow_methods=["POST", "GET"],
     allow_headers=["*"],
 )

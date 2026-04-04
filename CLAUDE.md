@@ -89,4 +89,4 @@ RECEIVER_EMAIL=<destination email>
 - FastAPI serves `index.html` as static mount at `/`; contact form at `/api/contact`
 - `portfolio/` subdirectory is a git-tracked mirror/copy — treat `E:\portfolio\` root as the source of truth
 - Python version pinned in `.python-version`
-- CORS is currently set to `allow_origins=["*"]` — acceptable for a portfolio, restrict if needed
+- CORS is restricted to `https://naila-portfolio.onrender.com` (production domain)
