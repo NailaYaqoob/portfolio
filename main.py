@@ -4,12 +4,15 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, EmailStr
 from dotenv import load_dotenv
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.util import get_remote_address
+from slowapi.errors import RateLimitExceeded
 
 load_dotenv()
 
@@ -18,6 +21,8 @@ SMTP_PORT = 587
 SMTP_USER = os.getenv("SMTP_USER")
 SMTP_PASS = os.getenv("SMTP_PASS")
 RECEIVER_EMAIL = os.getenv("RECEIVER_EMAIL", SMTP_USER)
+
+limiter = Limiter(key_func=get_remote_address)
 
 
 @asynccontextmanager
@@ -28,10 +33,12 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="Portfolio API", lifespan=lifespan)
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["https://nailayaqoob.onrender.com"],
     allow_methods=["POST", "GET"],
     allow_headers=["*"],
 )
@@ -45,7 +52,8 @@ class ContactForm(BaseModel):
 
 
 @app.post("/api/contact")
-async def contact(form: ContactForm):
+@limiter.limit("3/hour")
+async def contact(request: Request, form: ContactForm):
     if not SMTP_USER or not SMTP_PASS:
         raise HTTPException(status_code=500, detail="Email service not configured.")
 

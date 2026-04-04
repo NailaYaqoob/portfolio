@@ -290,10 +290,12 @@ document.querySelectorAll('.service-card, .project-card, .why-card').forEach(car
     }));
   }
 
+  let animating = true;
+
   function draw() {
+    if (!animating) return;
     ctx.clearRect(0, 0, W, H);
 
-    // Draw connections
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
         const dx = particles[i].x - particles[j].x;
@@ -310,7 +312,6 @@ document.querySelectorAll('.service-card, .project-card, .why-card').forEach(car
       }
     }
 
-    // Draw particles
     particles.forEach(p => {
       p.x += p.vx;
       p.y += p.vy;
@@ -328,11 +329,36 @@ document.querySelectorAll('.service-card, .project-card, .why-card').forEach(car
     requestAnimationFrame(draw);
   }
 
+  const heroObserver = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        if (!animating) { animating = true; draw(); }
+      } else {
+        animating = false;
+      }
+    },
+    { threshold: 0 }
+  );
+  heroObserver.observe(heroSection);
+
   resize();
   createParticles();
   draw();
   window.addEventListener('resize', () => { resize(); createParticles(); });
 })();
+
+/* ============================================================
+   YOUTUBE THUMBNAIL — click to load iframe
+============================================================ */
+function loadYT(wrapper, videoId) {
+  const iframe = document.createElement('iframe');
+  iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+  iframe.allow = 'autoplay; encrypted-media';
+  iframe.allowFullscreen = true;
+  iframe.style.cssText = 'width:100%;height:100%;border:0;display:block;';
+  wrapper.innerHTML = '';
+  wrapper.appendChild(iframe);
+}
 
 /* ============================================================
    VIDEO DEMO — hover to preview, click to play full
