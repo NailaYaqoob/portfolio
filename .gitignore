@@ -10,8 +10,6 @@ wheels/
 .venv
 .env
 
-# Nested repo mirror — not part of this project
-portfolio/
 
 # Claude Code local config
 .claude/
