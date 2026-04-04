@@ -1109,6 +1109,16 @@ img { max-width: 100%; }
   color: var(--text);
   border-color: rgba(255,255,255,0.3);
 }
+.youtube-link {
+  background: rgba(255, 0, 0, 0.12);
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  color: #ff4444;
+}
+.youtube-link:hover {
+  background: rgba(255, 0, 0, 0.22);
+  border-color: rgba(255, 0, 0, 0.6);
+  color: #ff6666;
+}
 
 /* ============================================================
    WHY ME
