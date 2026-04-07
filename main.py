@@ -19,7 +19,7 @@ SMTP_HOST = "smtp.gmail.com"
 SMTP_PORT = 587
 SMTP_USER = os.getenv("SMTP_USER")
 SMTP_PASS = os.getenv("SMTP_PASS")
-RECEIVER_EMAIL = os.getenv("RECEIVER_EMAIL", SMTP_USER)
+RECEIVER_EMAIL = os.getenv("RECEIVER_EMAIL") or SMTP_USER
 
 limiter = Limiter(key_func=get_remote_address)
 
@@ -35,9 +35,11 @@ app = FastAPI(title="Portfolio API", lifespan=lifespan)
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
+ALLOWED_ORIGIN = os.getenv("ALLOWED_ORIGIN", "http://localhost:8000")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://naila-portfolio.onrender.com"],
+    allow_origins=[ALLOWED_ORIGIN],
     allow_methods=["POST", "GET"],
     allow_headers=["*"],
 )
@@ -56,17 +58,24 @@ async def contact(request: Request, form: ContactForm):
     if not SMTP_USER or not SMTP_PASS:
         raise HTTPException(status_code=500, detail="Email service not configured.")
 
-    subject = f"Portfolio Inquiry from {form.name}"
+    name = form.name.strip()[:100]
+    message = form.message.strip()[:2000]
+    service = form.service.strip()[:100] if form.service else "Not specified"
+
+    if not name or not message:
+        raise HTTPException(status_code=422, detail="Name and message cannot be empty.")
+
+    subject = f"Portfolio Inquiry from {name}"
 
     body = f"""
 New contact form submission from your portfolio:
 
-Name:    {form.name}
+Name:    {name}
 Email:   {form.email}
-Service: {form.service or "Not specified"}
+Service: {service}
 
 Message:
-{form.message}
+{message}
     """.strip()
 
     msg = MIMEMultipart()
