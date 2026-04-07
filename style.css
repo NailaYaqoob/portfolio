@@ -1704,6 +1704,8 @@ img { max-width: 100%; }
 @media (max-width: 768px) {
   .section { padding: 72px 0; }
 
+  .logo-text { display: none; }
+
   .nav-links {
     position: fixed;
     top: var(--nav-h);
