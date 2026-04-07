@@ -1,7 +1,6 @@
 {
   "version": 2,
-  "toolbar": false,
-  "routes": [
+"routes": [
     {
       "src": "/api/contact",
       "dest": "/api/contact.py"
