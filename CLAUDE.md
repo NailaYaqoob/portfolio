@@ -18,7 +18,7 @@
 
 A **freelance portfolio website** for Naila Yaqoob, positioning her as an AI Developer & Automation Specialist available for hire. The site is business-outcome focused, targeting SMBs who need AI chatbots, automation agents, and RAG systems.
 
-**Live deployment:** Render (FastAPI serves static files + contact form API)
+**Live deployment:** Vercel (static site hosting)
 
 ---
 
@@ -29,7 +29,7 @@ A **freelance portfolio website** for Naila Yaqoob, positioning her as an AI Dev
 | Frontend  | Vanilla HTML/CSS/JS (no framework)              |
 | Backend   | FastAPI (Python)                                |
 | Fonts     | Inter + JetBrains Mono (Google Fonts)           |
-| Deployment| Render                                          |
+| Deployment| Vercel                                          |
 | Email     | Gmail SMTP via Python `smtplib`                 |
 
 ### Key Files
@@ -37,7 +37,7 @@ A **freelance portfolio website** for Naila Yaqoob, positioning her as an AI Dev
 - `style.css` — all styles (dark theme, CSS custom properties)
 - `script.js` — navbar scroll, typing effect, fade-in observer, counter animation
 - `main.py` — FastAPI app: serves static files + `/api/contact` POST endpoint
-- `requirements.txt` — Python dependencies for Render
+- `requirements.txt` — Python dependencies
 - `.env` — `SMTP_USER`, `SMTP_PASS`, `RECEIVER_EMAIL` (never commit this)
 
 ---
@@ -89,4 +89,4 @@ RECEIVER_EMAIL=<destination email>
 - FastAPI serves `index.html` as static mount at `/`; contact form at `/api/contact`
 - `portfolio/` subdirectory is a git-tracked mirror/copy — treat `E:\portfolio\` root as the source of truth
 - Python version pinned in `.python-version`
-- CORS is restricted to `https://naila-portfolio.onrender.com` (production domain)
+- Deployed on Vercel (static site); contact form API may need a separate backend or serverless function
