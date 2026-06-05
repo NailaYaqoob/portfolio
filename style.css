@@ -617,9 +617,9 @@ img { max-width: 100%; }
 
 .certs-section-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
-  max-width: 820px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1080px;
   margin: 0 auto;
 }
 
@@ -1088,7 +1088,7 @@ img { max-width: 100%; }
 /* Project Cards Grid */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
 }
 
@@ -1275,7 +1275,6 @@ img { max-width: 100%; }
 /* YouTube thumbnail embed */
 .yt-thumb-wrapper {
   position: relative;
-  margin: 12px 0;
   border-radius: var(--radius-sm);
   overflow: hidden;
   border: 1px solid var(--card-border);
