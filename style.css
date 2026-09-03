@@ -1092,6 +1092,14 @@ img { max-width: 100%; }
   gap: 24px;
 }
 
+/* Odd number of cards: centre the lone final card instead of
+   leaving it stranded in the left column */
+.projects-grid > .project-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  width: calc(50% - 12px);
+  margin: 0 auto;
+}
+
 .project-card {
   background: var(--card);
   border: 1px solid var(--card-border);
@@ -1741,6 +1749,7 @@ img { max-width: 100%; }
   .services-grid { grid-template-columns: 1fr; }
   .why-grid { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: 1fr; }
+  .projects-grid > .project-card:last-child:nth-child(odd) { width: auto; }
   .gigs-grid { grid-template-columns: 1fr; }
 
   .contact-grid { grid-template-columns: 1fr; gap: 48px; }
